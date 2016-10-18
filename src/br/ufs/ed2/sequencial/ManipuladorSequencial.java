@@ -68,8 +68,8 @@ public class ManipuladorSequencial implements IFileOrganizer {
 				channel.read(buf);
 				buf.flip();
 				Aluno a = new Aluno(buf);
-				System.out.println(a.matric);
-				if(a.matric == matric){
+				System.out.println(a.getMatric());
+				if(a.getMatric() == matric){
 					return a;
 				}
 			}

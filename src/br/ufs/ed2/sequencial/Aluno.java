@@ -4,11 +4,14 @@ import java.nio.ByteBuffer;
 
 public class Aluno {
 
-	long matric;		// 8  bytes
-	String nome;		// 60 bytes
-	String endereco;	// 80 bytes
-	short idade;		// 2  bytes
-	String cpf;			// 15 bytes
+	public static final int TAMANHO_ALUNO = 165;
+	public static final int TAMANHO_MATRIC = 8;
+	
+	private long matric;		// 8  bytes
+	private String nome;		// 60 bytes
+	private String endereco;	// 80 bytes
+	private short idade;		// 2  bytes
+	private String cpf;			// 15 bytes
 	
 	// Construtor da Classe
 	public Aluno (long matric, String nome, String endereco, short idade, String cpf) {
@@ -33,9 +36,9 @@ public class Aluno {
 		
 		this.idade = buf.getShort();
 		
-		byte[] vCpf = new byte[80];
+		byte[] vCpf = new byte[15];
 		buf.get(vCpf);
-		this.endereco = new String(vCpf);
+		this.cpf = new String(vCpf);
 	}
 	
 	private String corrigirTamanho (String s, int size) {	
@@ -66,5 +69,8 @@ public class Aluno {
         
         return buf;
 	}
-	
+
+	public long getMatric() {
+		return matric;
+	}
 }
